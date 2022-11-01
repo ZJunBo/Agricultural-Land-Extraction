@@ -1,0 +1,17 @@
+SOURCE: CityscapesEasy
+TARGET: CityscapesHard
+DATA_DIRECTORY_SOURCE: ../ADVENT/data/Cityscapes
+DATA_LIST_SOURCE: ../entropy_rank/easy_split.txt
+DATA_LIST_TARGET: ../entropy_rank/hard_split.txt
+NUM_WORKERS: 8
+TRAIN:
+  INPUT_SIZE_SOURCE:
+    - 512
+    - 512
+  DA_METHOD: AdvEnt
+  RESTORE_FROM: /home/zjb/Downloads/RoadDA-main/ADVENT/experiments/GID_LoveDA/GTA2Cityscapes_Transformer_AdvEnt/model_300.pth
+  LEARNING_RATE: 0.0004
+  LAMBDA_ADV_MAIN: 0.001
+  LAMBDA_ADV_AUX: 0.0002
+TEST:
+  MODE: best
